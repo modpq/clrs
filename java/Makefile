@@ -1,9 +1,8 @@
 JUNIT = junit-platform-console-standalone-1.2.0.jar
 CP = ".:test:$$HOME/lib/java/$(JUNIT)"
 
-A01InsertionSort:
-	javac -cp $(CP) test/$@Test.java
-	java $@
+test: FORCE
+	javac -cp $(CP) test/*.java
 	java -jar ~/lib/java/$(JUNIT) -cp $(CP) --scan-classpath
 
 junit:
@@ -12,3 +11,5 @@ junit:
 
 clean:
 	find . -name "*.class" -exec rm {} +
+
+FORCE:
