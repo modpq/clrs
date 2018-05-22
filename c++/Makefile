@@ -8,6 +8,10 @@ test: FORCE
 	g++ -std=c++17 -pedantic -Wall -Wextra -Wno-missing-braces $@
 	./a.out
 
+main:
+	for f in a*.cc; do make "$$f"; done
+
+
 cppunit:
 	# Install CppUnit.
 	if uname | grep -q Darwin; then brew install cppunit; fi
