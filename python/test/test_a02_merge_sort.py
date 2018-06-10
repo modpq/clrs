@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
 
+# Author: Sunaina Pai
+# License: MIT
+
 
 import unittest
 from a02_merge_sort import merge, merge_sort

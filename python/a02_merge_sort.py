@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
 
+# Author: Sunaina Pai
+# License: MIT
+
+
 def merge(A, p, q, r):
     L = A[p:q+1]   # L = A[p..q]
     R = A[q+1:r+1] # R = A[q+1..r]
