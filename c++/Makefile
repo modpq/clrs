@@ -23,4 +23,7 @@ count:
 	grep -r "TEST(test_" test/*.cc | wc -l
 	[ $$(grep -r "::test_" test/*.cc | wc -l) -eq $$(grep -r "TEST(test_" test/*.cc | wc -l) ]
 
+clean:
+	rm -rf *.out *.dSYM
+
 FORCE:

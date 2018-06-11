@@ -1,5 +1,19 @@
+# Ignore Vim swap files.
 *.sw?
+
+# Ignore Python generated files.
 *.pyc
 __pycache__
+
+# Ignore Java generated files.
 *.class
+
+# Ignore C++ generated files.
 *.out
+*.dSYM
+
+# Ignore throwaway examples.
+foo.*
+bar.*
+baz.*
+qux.*
