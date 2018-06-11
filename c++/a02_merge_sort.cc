@@ -58,9 +58,8 @@ void merge_sort(std::vector<int>& A, std::size_t p, std::size_t r)
 void print_vector(const std::vector<int>& A)
 {
     std::cout << "{";
-    for (std::size_t i = 0; i < A.size() - 1; i++) {
+    for (std::size_t i = 0; i < A.size() - 1; i++)
         std::cout << A[i] << ", ";
-    }
     std::cout << A[A.size() - 1] << "}\n";
 }
 
