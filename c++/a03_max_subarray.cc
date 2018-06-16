@@ -41,6 +41,9 @@ find_max_crossing_subarray(std::vector<int>& A,std::size_t low,
             right_sum = sum;
             max_right = j;
         }
+
+        if (j == 0)
+            break;
     }
 
     return std::make_tuple(max_left, max_right, left_sum + right_sum);
