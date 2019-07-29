@@ -1,0 +1,214 @@
+\documentclass[oneside]{book}
+% Do not indent paragraphs and insert blank space between paragraphs.
+\usepackage{parskip}
+\usepackage{graphicx}
+% For align* environment
+\usepackage{amsmath}
+
+\usepackage{hyperref}
+
+\author{
+    Sunaina Pai \\
+    Susam Pal
+}
+
+\title{
+    CLRS Notes and Solutions \\
+    \large Introduction to Algorithms, 3rd ed.
+}
+\date{}
+
+\newenvironment{itenv}[2]
+               {\begin{trivlist}\item \textbf{#1 #2.} \itshape}
+               {\end{trivlist}}
+\newenvironment{exercise}[1]{\begin{itenv}{Exercise}{#1}}{\end{itenv}}
+\newenvironment{problem}[1]{\begin{itenv}{Problem}{#1}}{\end{itenv}}
+\newenvironment{solution}{\textit{Solution.}}{\vspace{12pt}}
+
+\begin{document}
+\frontmatter
+\maketitle
+% URLs
+\newcommand{\ccby}[1]
+           {\href{http://creativecommons.org/licenses/by/4.0/}{#1}}
+\newcommand{\ccbylc}[1]
+           {\href{https://creativecommons.org/licenses/by/4.0/legalcode}{#1}}
+
+% Copyright
+\copyright{} 2018 Sunaina Pai and Susam Pal
+
+% Logo 
+\ccby{\includegraphics[scale=0.75]{ccby.png}}
+
+% License
+This document is licensed under the
+\ccby{Creative Commons Attribution 4.0 International License}.
+
+% Notice
+You are free to share the material in any medium or format and/or adapt
+the material for any purpose, even commercially, under the terms of the
+Creative Commons Attribution 4.0 International (CC BY 4.0) License.
+
+% Disclaimer
+This document is provided \textbf{as-is and as-available,}
+\textbf{without representations or warranties of any kind,} whether
+express, implied, statutory, or other. See the \ccbylc{CC BY 4.0 Legal
+Code} for details.
+\tableofcontents
+\mainmatter
+
+
+% I
+\part{Foundations}
+
+% 1
+\chapter{The Role of Algorithms in Computing}
+
+\section*{Exercises}
+
+% 1.1-1
+\begin{exercise}{1.1-1}
+Give a real-world example that requires sorting or a real-world example
+that requires computing a convex hull.
+\end{exercise}
+
+\begin{solution}
+A real world example of sorting is sorting files of employees in the
+ascending order of employee identification numbers.
+
+A real world example of computing a convex hull is putting a fence
+around one's property.
+\end{solution}
+
+% 1.1-2
+\begin{exercise}{1.1-2}
+Other than speed, what other measures of efficiency might one use in a
+real-world setting?
+\end{exercise}
+
+\begin{solution}
+Other than speed, one might use cost, space consumption, manpower, etc. as
+measures of efficiency.
+\end{solution}
+
+% 1.1-3
+\begin{exercise}{1.1-3}
+Select a data structure that you have seen previously, and discuss its
+strengths and limitations.
+\end{exercise}
+
+\begin{solution}
+An array.
+
+An array allows constant time lookup of any element by index. However
+insertion or deletion of an element at a particular index in the array
+requires linear time shifting of other elements at higher indices.
+\end{solution}
+
+% 1.1-4
+\begin{exercise}{1.1-4}
+How are the shortest-path and traveling-salesman problems given above
+similar? How are they different?
+\end{exercise}
+
+\begin{solution}
+The shortest-path and traveling-salesman problems have the following
+similarities:
+\begin{itemize}
+\item They are both graph traversal problems.
+\item They both require finding the shortest path in a graph.
+\end{itemize}
+
+They have the following differences:
+\begin{itemize}
+\item The shortest-path problem does not require visiting all the nodes
+      in a graph but the traveling-salesman problem requires visiting
+      all the nodes in a graph.
+\item The starting node and ending node are different in the
+      shortest-path problem but they are same in the traveling-salesman
+      problem.
+\end{itemize}
+\end{solution}
+
+% 1.1-5
+\begin{exercise}{1.1-5}
+Come up with a real-world problem in which only the best solution will
+do. Then come up with one in which a solution that is ``approximately''
+the best is good enough.
+\end{exercise}
+
+\begin{solution}
+A real-world problem in which only the best solution will do is to
+determine the position of all aircrafts on radar. An error in
+determining the presence or location of an aircraft may lead to
+accidents.
+
+A problem in which a solution that is approximately the best is good
+enough is to determine an estimated time of arrival at a destination
+while driving with a navigation system. An error of a few minutes is
+usually not disastrous.
+\end{solution}
+
+% 1.2-1
+\begin{exercise}{1.2-1}
+Give an example of an application that requires algorithmic content at
+the application level, and discuss the function of the algorithms
+involved.
+\end{exercise}
+
+\begin{solution}
+An example of an application that requires algorithmic content is an
+article recommendation system that recommends articles to users that may
+be of interest to them. The algorithm needs to determine an article from
+the list of unread articles that best matches the user's interest
+determined from the reading history of the user.
+\end{solution}
+
+% 1.2-2
+\begin{exercise}{1.2-2}
+Suppose we are comparing implementations of insertion sort and merge
+sort on the same machine. For inputs of size \( n \), insertion sort
+runs in \( 8n^2 \) steps, while merge sort runs in \(64 n \lg n\) steps.
+For which values of \( n \) does insertion sort beat merge sort?
+\end{exercise}
+
+\begin{solution}
+We want to find integers \( n \) such that \( 8n^2 < 64 n \lg n \). From
+this inequality, we get
+\begin{align*}
+8n^2 < 64 n \lg n & \iff n < 8 \lg n \\
+                  & \iff 8 \lg n - n > 0.
+\end{align*}
+
+Let \( f(n) = 8 \lg n - n \). To find the critical point of \( f(n) \),
+we need to find \( n \) such that \( \frac{d f(n)}{dn} = 0 \). Solving
+this, we get
+\begin{align*}
+\frac{d}{dn} (8 \lg n - n) = 0
+& \implies 8 \frac{d}{dn} \left( \frac{\ln n}{\ln 2} - n \right)= 0 \\
+& \iff \frac{8}{n \ln 2} - 1 = 0 \\
+& \iff n = \frac{8}{\ln 2} \approx 11.54.
+\end{align*}
+
+Now we compute the value of \( f(n) \) for some interesting values of
+\( n \):
+\begin{itemize}
+\item f(1) = -1
+\item f(2) = 6
+\item f(43) = 0.41
+\item f(44) = -0.32
+\end{itemize}
+
+These values show that \( f(n) > 0 \) when \( 2 \leq n \leq 43 \).
+
+From the fact that \( n = \frac{8}{\ln 2} \approx 11.54 \) is the only
+critical point for \( f(n) \) and the above enumerated values, we
+conclude that \( f(n) < 0 \) for \( n < 2 \) and \( n > 43 \).
+
+Therefore we conclude that \( f(n) > 0 \) if and only if
+\( 2 \leq n \leq 43 \).
+
+We have shown that insertion sort beats merge sort when
+\( 2 \leq n \leq 43 \).
+\end{solution}
+\end{document}
